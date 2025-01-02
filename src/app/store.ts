@@ -1,15 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import notesSlice from '@/features/notes/notes-slice';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import preferencesSlice from '@/features/preferences/preferences-slice';
+// prettier-ignore
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import { syncStorage } from 'redux-persist-webextension-storage';
 
 const syncStorageConfig = {
@@ -19,6 +12,7 @@ const syncStorageConfig = {
 
 const rootReducer = combineReducers({
   notes: notesSlice,
+  preferences: preferencesSlice,
 });
 
 const persistedReducer = persistReducer(syncStorageConfig, rootReducer);

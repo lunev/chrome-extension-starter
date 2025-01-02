@@ -1,1 +1,1 @@
-console.log("Service worker installed.");
+const e=()=>{console.log("Service worker installed.")};e();

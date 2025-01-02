@@ -21,11 +21,12 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <>
+    <div data-testid="dashboard">
+      <h2 className="sr-only">Dashboard</h2>
       {notes && notes.length > 0 ? (
         <div className="mb-2">
           {notes.map((note) => (
-            <div key={note.id} className="flex mb-1 items-center">
+            <div key={note.id} className="flex mb-1 items-center note">
               <div className="title flex-1 pr-2">{note.title}</div>
               <div className="actions">
                 <button
@@ -43,7 +44,7 @@ const Dashboard: React.FC = () => {
         <p className="mb-2">There are no notes yet.</p>
       )}
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} role="form">
         <div className="flex">
           <input
             type="text"
@@ -53,10 +54,10 @@ const Dashboard: React.FC = () => {
           <button className="btn-outlined">add</button>
         </div>
         {errors.title && (
-          <p className="mt-2 text-red-500">This field is required</p>
+          <p className="mt-2 text-red-500">{errors.title.message}</p>
         )}
       </form>
-    </>
+    </div>
   );
 };
 
