@@ -45,4 +45,42 @@ describe('BaseSwitch Component', () => {
     // Ensure the onChange handler was called after the click event
     expect(mockOnChange).toHaveBeenCalled();
   });
+
+  it('calls onChange when Space key is pressed', () => {
+    const handleChange = vi.fn(); // Mock the onChange handler
+    const { getByRole } = render(
+      <BaseSwitch
+        label="Test Switch"
+        checked={false}
+        onChange={handleChange}
+      />,
+    );
+
+    const switchElement = getByRole('button');
+
+    // Simulate pressing the Space key
+    fireEvent.keyDown(switchElement, { code: 'Space' });
+
+    // Verify onChange was called
+    expect(handleChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not call onChange for other keys', () => {
+    const handleChange = vi.fn();
+    const { getByRole } = render(
+      <BaseSwitch
+        label="Test Switch"
+        checked={false}
+        onChange={handleChange}
+      />,
+    );
+
+    const switchElement = getByRole('button');
+
+    // Simulate pressing a key other than Space
+    fireEvent.keyDown(switchElement, { key: 'Enter' });
+
+    // Verify onChange was not called
+    expect(handleChange).not.toHaveBeenCalled();
+  });
 });

@@ -16,6 +16,13 @@ const BaseSwitch: React.FC<BaseSwitchProps> = ({
   hint,
   onChange,
 }) => {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.code === 'Space') {
+      event.preventDefault();
+      onChange();
+    }
+  };
+
   return (
     <div className={`${styles.container} ${className}`}>
       <div className={styles.switch}>
@@ -29,7 +36,13 @@ const BaseSwitch: React.FC<BaseSwitchProps> = ({
             aria-label={label}
             onChange={onChange}
           />
-          <div className={styles.bar} role="button" aria-label={label}>
+          <div
+            className={styles.bar}
+            role="button"
+            tabIndex={0}
+            aria-label={label}
+            onKeyDown={handleKeyPress}
+          >
             <span className={styles.dot}></span>
           </div>
         </label>

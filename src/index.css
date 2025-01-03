@@ -44,11 +44,11 @@ main {
   }
 
   .btn-primary {
-    @apply btn bg-sky-500 text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2;
+    @apply btn bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2;
   }
 
   .btn-outlined {
-    @apply btn border border-sky-500 text-sky-500 text-xs hover:bg-sky-500 hover:dark:bg-sky-700 hover:dark:border-sky-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2;
+    @apply btn border border-green-500 text-green-500 text-xs hover:bg-green-500 hover:dark:bg-green-700 hover:dark:border-green-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2;
   }
 
   .btn-warning {
